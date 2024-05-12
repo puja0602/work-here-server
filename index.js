@@ -44,6 +44,20 @@ async function run() {
         res.send(result);
     })
 
+    //Save a single bid in db
+    app.post('/bid', async(req,res)=>{
+      const bidData = req.body;
+      const result = await bidsCollection.insertOne(bidData)
+      res.send(result)
+    })
+
+     //Save a single job in db
+        app.post('/job', async(req,res)=>{
+          const jobData = req.body;
+          const result = await jobsCollection.insertOne(jobData)
+          res.send(result)
+        })
+
     // Connect the client to the 
     // await client.connect();
     // Send a ping to confirm a successful connection
